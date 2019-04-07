@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset = "utf-8">
+  <link rel="stylesheet type="text/css href="editStyle2.css">
+  <script src="jquery-3.2.1.min.js"></script>
+  <title>Video and Music Website Design</title>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC7YFg-1sxOJRQO2w3qt0xbaVk_oxJ_hLA",
+      authDomain: "fyp2-173f7.firebaseapp.com",
+      databaseURL: "https://fyp2-173f7.firebaseio.com",
+      projectId: "fyp2-173f7",
+      storageBucket: "fyp2-173f7.appspot.com",
+      messagingSenderId: "719597358691"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    initProfile();
+
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#videoDivContainer div").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+    $('#userSetting').click(function(){
+      window.location.href = "LoginRegister2.html";
+    });
+  });
+
+  function initProfile(){
+    firebase.auth().onAuthStateChanged(function(user) {
+      if(user){
+        var user = firebase.auth().currentUser; //get user information
+        name = user.displayName;
+        $("#userName").html("Welcome, " + name + "!!");
+      }
+      else{
+        //window.location.href = "LoginRegister2.html";
+        $("#userName").html("You're not logged in.");
+        alert("You're not logged in.");
+        window.location.href = "LoginRegister2.html";
+      }
+      getFavVideo(user.uid); // dono why cannot get the uid in this function
+    });
+  }
+
+  function getFavVideo(uid){
+    var databaseRef = firebase.database().ref('user-favouriteVideo/' + uid); // maybe removw '/'
+    databaseRef.once('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var childKey = childSnapshot.key;
+      var childData = childSnapshot.val();
+      //alert(childData.videoName);
+      appendVideo(childData.videoName, childKey, uid); //child for remove video
+    });
+  });
+  }
+
+  function appendVideo(videoName, childKey, uid){
+    //$("#favVideoDiv").html('<div class="videoDiv"><video width="300" height="200" controls><source src="mp4\' + videoName + '.mp4" type="video/mp4"></video><br/></div>');
+      $("#favVideoDiv").append('<div class=\"videoDiv\" style=\"display:block;\"><video width=\"300\" height=\"200\" controls><source src=\"mp4\\' + videoName + '.mp4\" type=\"video/mp4\"></video><br/><button onclick=\"deleteFavourite(\'' + childKey + '\', \'' + uid + '\')\">Remove</button></div>');
+  }
+
+  function deleteFavourite(childKey, uid){
+    //alert("yay " + childKey + " " + uid);
+    //updates['/user-favouriteVideo/' + uid + '/' + childKey] = null;
+    //updates['/favouriteVideo/' + childKey] = null;
+    firebase.database().ref().child('/user-favouriteVideo/' + uid + '/' + childKey).remove();
+    firebase.database().ref().child('/favouriteVideo/' + childKey).remove();
+    alert("Remove successfully!");
+    window.location.href = "myFavouriteVideo.html";
+  }
+
+  </script>
+</head>
+
+<body> <!--see w3 school-->
+  <div class="topDiv">
+    <div class="topLeftDiv">
+      <span class="title">Video and Music Website Design</span>
+    </div>
+    <div class="topRightDiv">
+      <button id="userSetting" class="stickRight">
+        <img src="images\user_icon.png" class="icon" alt="user setting">
+      </button>
+    </div>
+  </div>
+
+  <div class="searchDiv">
+    Search video: <input id="myInput" type="text" placeholder="Search">
+  </div>
+
+  <div class="middleDiv container" id="videoDivContainer">
+    <h2><span id="userName"></span></h2>
+    <span id="favVideoDiv"></span>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="editStyle.css">
+
+  <script src="jquery-1.11.3.min.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC7YFg-1sxOJRQO2w3qt0xbaVk_oxJ_hLA",
+      authDomain: "fyp2-173f7.firebaseapp.com",
+      databaseURL: "https://fyp2-173f7.firebaseio.com",
+      projectId: "fyp2-173f7",
+      storageBucket: "fyp2-173f7.appspot.com",
+      messagingSenderId: "719597358691"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+   initProfile();
+   $("#btnUpdateProfile").click(function(){
+     updateProfile();
+   });
+ });
+
+ function initProfile(){
+   firebase.auth().onAuthStateChanged(function(user) {
+     if (user==null){
+       window.location.href = "LoginRegister2.html";
+     }
+   });
+ }
+
+ function updateProfile(){
+   var user = firebase.auth().currentUser; //get user information
+   name = user.displayName;
+   email = user.email;
+   photoURL = user.photoURL;
+   emailVerified = user.emailVerified;
+   uid = user.uid;
+   var tmpName = $("#newUserName").val();
+   var tmpURL = $("#newProfileURL").val();
+
+   if(tmpName == "") { //if NULL means they dont want change
+     tmpName = name;
+   }
+   if(tmpURL == "") {
+     tmpURL = photoURL;
+   }
+
+   user.updateProfile({
+        displayName: tmpName,
+        photoURL: tmpURL
+  }).then(function() {
+      // Update successful.
+window.location.href = "userProfile2.html";
+  }, function(error) {
+      // An error happened.
+ var errorCode = error.code;
+       var errorMessage = error.message;
+ $("span").html("<h4 style=\"color:red\">" + errorMessage + "</h4>");
+  console.log(error);
+  });
+
+ }
+  </script>
+</head>
+<body>
+  <h1 class="title">Profile Settings</h1>
+  <div class="topRight"> <!--change--><a href="VideoPage.html" class="icon">Home</a>
+  <a href="userProfile2.html" class="icon">Back</a></div>
+  <p>New Profile Picture URL: <input type="text" id="newProfileURL"
+  name="New Profile URL"></p>
+  <p>New Name: <input type="text" id="newUserName" name="New User Name"></p>
+   <button id="btnUpdateProfile">Update</button>
+   <span id="updateProfileMsg"></span>
+
+</body>
+</html>

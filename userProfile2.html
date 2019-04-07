@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Profile</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet type="text/css href="editStyle.css">
+  <script src="jquery-1.11.3.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC7YFg-1sxOJRQO2w3qt0xbaVk_oxJ_hLA",
+      authDomain: "fyp2-173f7.firebaseapp.com",
+      databaseURL: "https://fyp2-173f7.firebaseio.com",
+      projectId: "fyp2-173f7",
+      storageBucket: "fyp2-173f7.appspot.com",
+      messagingSenderId: "719597358691"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script type = "text/javascript">
+  $(document).ready(function(){
+    initProfile();
+
+    $("#tmpSignOut").click(function () {
+       firebase.auth().signOut();
+     });
+
+     $("#ShowMyRentIn").click(function(){
+       getMyRentInData();
+     });
+  });
+  function initProfile(){
+    firebase.auth().onAuthStateChanged(function(user) {
+      if(user){
+        var user = firebase.auth().currentUser; //get user information
+        name = user.displayName;
+        email = user.email;
+        photoURL = user.photoURL;
+        emailVerified = user.emailVerified;
+        uid = user.uid;
+        $("#profilePic").attr("src",photoURL);
+        $("#userName").html(name);
+        $("#userEmail").html(email);
+      }
+      else{
+        window.location.href = "LoginRegister2.html";
+      }
+    });
+  }
+  </script>
+</head>
+<body>
+  <div class="up"><h1 class="title">User Profile</h1></div>
+  <div class="topRight"><a href="VideoPage.html" class="icon">Home</a>
+  <a href="profileSetting2.html" class="icon">Change Profile</a></div>
+  <div class="profileInformation">
+    <img id="profilePic" alt="Profile Picture" class="profilePic">
+    <br><br>
+    <p>Name: <span id="userName"></span></p>
+    <p>Email: <span id="userEmail"></span></p><br>
+    <button id="tmpSignOut">Sign Out</button><br>
+    <span id="out"></span>
+  </div>
+</body>
+</html>

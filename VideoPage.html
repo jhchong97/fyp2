@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset = "utf-8">
+  <link rel="stylesheet type="text/css href="editStyle2.css">
+  <script src="jquery-3.2.1.min.js"></script>
+  <title>Video and Music Website Design</title>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC7YFg-1sxOJRQO2w3qt0xbaVk_oxJ_hLA",
+      authDomain: "fyp2-173f7.firebaseapp.com",
+      databaseURL: "https://fyp2-173f7.firebaseio.com",
+      projectId: "fyp2-173f7",
+      storageBucket: "fyp2-173f7.appspot.com",
+      messagingSenderId: "719597358691"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    initProfile();
+    filterSelection("all");
+    $('#btn1').click(function(){
+      showLyrics1();
+    });
+    $('#btn2').click(function(){
+      showLyrics2();
+    });
+    $('#btn3').click(function(){
+      showLyrics3();
+    });
+    $('#btn4').click(function(){
+      showLyrics4();
+    });
+    $('#btn5').click(function(){
+      showLyrics5();
+    });
+    $('#btn6').click(function(){
+      showLyrics6();
+    });
+    $('#btn7').click(function(){
+      showLyrics7();
+    });
+    $('#btn8').click(function(){
+      showLyrics8();
+    });
+    $('#btn9').click(function(){
+      showLyrics9();
+    });
+    $('#btn10').click(function(){
+      showLyrics10();
+    });
+    $('#userSetting').click(function(){
+      window.location.href = "LoginRegister2.html";
+    });
+    //-------------------------------------
+    // $("#myInput").on("keyup", function() {
+    //   var value = $(this).val().toLowerCase();
+    //   $("#myDIV *").filter(function() {
+    //     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    //   });
+    // });
+
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#videoDivContainer div").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+
+  //-----------------------------filter function------------------------------
+  function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("videoDiv");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+      w3RemoveClass(x[i], "show");
+      if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    }
+  }
+
+  function w3AddClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+    }
+  }
+
+  function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);
+      }
+    }
+    element.className = arr1.join(" ");
+  }
+
+  // Add active class to the current button (highlight it)
+  var btnContainer = document.getElementById("myBtnContainer");
+  var btns = btnContainer.getElementsByClassName("btn");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function(){
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
+  //----------------------------------
+  var i = ["0","0","0","0","0","0","0","0","0","0","0"];//11 i (no use 0)
+  //---------------------------------------
+  //var i = [0,0,0,0,0,0,0,0,0,0,0];
+
+  function showLyrics1(){
+    alert("Hello! I am an alert box!!" + ti); //-------------------------
+    if(ti%2==0){
+      $('#emb1').css('display', 'block');
+      ti++;
+    }
+    else{
+      $('#emb1').css('display', 'none');
+      i[1]--;
+    }
+  }
+  function showLyrics2(){
+    if(i[2]%2==0){
+      $('#emb2').css('display', 'block');
+      i[2]++;
+    }
+    else{
+      $('#emb2').css('display', 'none');
+      i[2]--;
+    }
+  }
+  function showLyrics3(){
+    if(i[3]%2==0){
+      $('#emb3').css('display', 'block');
+      i[3]++;
+    }
+    else{
+      $('#emb3').css('display', 'none');
+      i[3]--;
+    }
+  }
+  function showLyrics4(){
+    if(i[4]%2==0){
+      $('#emb4').css('display', 'block');
+      i[4]++;
+    }
+    else{
+      $('#emb4').css('display', 'none');
+      i[4]--;
+    }
+  }
+  function showLyrics5(){
+    if(i[5]%2==0){
+      $('#emb5').css('display', 'block');
+      i[5]++;
+    }
+    else{
+      $('#emb5').css('display', 'none');
+      i[5]--;
+    }
+  }
+  function showLyrics6(){
+    if(i[6]%2==0){
+      $('#emb6').css('display', 'block');
+      i[6]++;
+    }
+    else{
+      $('#emb6').css('display', 'none');
+      i[6]--;
+    }
+  }
+  function showLyrics7(){
+    if(i[7]%2==0){
+      $('#emb7').css('display', 'block');
+      i[7]++;
+    }
+    else{
+      $('#emb7').css('display', 'none');
+      i[7]--;
+    }
+  }
+  function showLyrics8(){
+    if(i[8]%2==0){
+      $('#emb8').css('display', 'block');
+      i[8]++;
+    }
+    else{
+      $('#emb8').css('display', 'none');
+      i[8]--;
+    }
+  }
+  function showLyrics9(){
+    if(i[9]%2==0){
+      $('#emb9').css('display', 'block');
+      i[9]++;
+    }
+    else{
+      $('#emb9').css('display', 'none');
+      i[9]--;
+    }
+  }
+  function showLyrics10(){
+    if(i[10]%2==0){
+      $('#emb10').css('display', 'block');
+      i[10]++;
+    }
+    else{
+      $('#emb10').css('display', 'none');
+      i[10]--;
+    }
+  }
+
+  function initProfile(){
+    firebase.auth().onAuthStateChanged(function(user) {
+      if(user){
+        var user = firebase.auth().currentUser; //get user information
+        name = user.displayName;
+        $("#userName").html("Welcome, " + name + "!!");
+      }
+      else{
+        //window.location.href = "LoginRegister2.html";
+        $("#userName").html("You're not logged in.");
+      }
+    });
+  }
+
+  function addToFavVideo(v){
+    var user = firebase.auth().currentUser;
+    if(user){
+      var postData = {
+        videoName: v
+      };
+      var newPostKey = firebase.database().ref().child('favouriteVideo').push().key;
+      var updates = {};
+      updates['/favouriteVideo/' + newPostKey] = postData;
+      updates['/user-favouriteVideo/' + user.uid + '/' + newPostKey] = postData;
+      firebase.database().ref().update(updates).then(function() {
+        alert("Saved!");
+      });
+    //maybe here can check if it updated successfully
+    }
+    else{
+      alert("Please login first");
+    }
+  }
+  </script>
+</head>
+
+<body> <!--see w3 school-->
+  <div class="topDiv">
+    <div class="topLeftDiv">
+      <span class="title">Video and Music Website Design</span>
+    </div>
+    <div class="topRightDiv">
+      <button id="userSetting" class="stickRight">
+        <img src="images\user_icon.png" class="icon" alt="user setting">
+      </button>
+    </div>
+  </div>
+
+  <div class="searchDiv">
+    Search video: <input id="myInput" type="text" placeholder="Search">
+  </div>
+  <div id="myBtnContainer" style="margin: 100px 10px 10px 10px;">
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <button class="btn" onclick="filterSelection('AlanWalker')"> Alan Wakler</button>
+    <button class="btn" onclick="filterSelection('Zedd')"> Zedd</button>
+    <button class="btn" onclick="filterSelection('Maroon5')"> Maroon5</button>
+    <button class="btn" onclick="filterSelection('Drake')"> Drake</button>
+    <button class="btn" onclick="filterSelection('CharliePuth')"> Charlie Puth</button>
+    <button class="btn" onclick="filterSelection('WizKhalifa')"> Wiz Khalifa</button>
+    <button class="btn" onclick="filterSelection('TheChainsmokers')"> The Chainsmokers</button>
+  </div>
+
+  <div class="middleDiv container" id="videoDivContainer">
+    <h2><span id="userName"></span></h2><br>
+    <a href="myFavouriteVideo.html">Go to my favourite video</a><br>
+    <div class="videoDiv AlanWalker"> <!--video1-->
+      <video width="300" height="200" controls>
+        <source src="mp4\Alone.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video><br/>
+      <audio controls>
+        <source src="mp3\Alone.mp3" type="audio/mp3">
+      </audio><br/>
+      <a href="https://www.youtube.com/watch?v=1-xGerv5FOk">Alan Walker - Alone</a><br/>
+      <button id="btn1">Lyrics</button>
+      <button onclick="addToFavVideo('Alone')">Add to my favourite</button>
+      <span><embed src="lyrics\Alone.txt" class="lyricsEmb" id="emb1"></span>
+    </div>
+    <div class="videoDiv AlanWalker"> <!--video2-->
+      <video width="300" height="200" controls>
+        <source src="mp4\Faded.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video><br/>
+      <audio controls>
+        <source src="mp3\Faded.mp3" type="audio/mp3">
+      </audio><br/>
+      <a href="https://www.youtube.com/watch?v=1-xGerv5FOk">Alan Walker - Faded</a><br/>
+      <button id="btn2">Lyrics</button>
+      <button onclick="addToFavVideo('Faded')">Add to my favourite</button>
+      <span><embed src="lyrics\Faded.txt" class="lyricsEmb" id="emb2"></span>
+    </div>
+    <div class="videoDiv Zedd"> <!--video3-->
+      <video width="300" height="200" controls>
+        <source src="mp4\The Middle.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video><br/>
+      <audio controls>
+        <source src="mp3\The Middle.mp3" type="audio/mp3">
+      </audio><br/>
+      <a href="https://www.youtube.com/watch?v=M3mJkSqZbX4">Zedd, Maren Morris, Grey - The Middle</a><br/>
+      <button id="btn3">Lyrics</button>
+      <button onclick="addToFavVideo('The Middle')">Add to my favourite</button>
+      <span><embed src="lyrics\The Middle.txt" class="lyricsEmb" id="emb3"></span>
+    </div>
+    <div class="videoDiv TheChainsmokers"> <!--video4-->
+      <video width="300" height="200" controls>
+        <source src="mp4\Don t Let Me Down.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video><br/>
+      <audio controls>
+        <source src="mp3\Don t Let Me Down.mp3" type="audio/mp3">
+      </audio><br/>
+      <a href="https://www.youtube.com/watch?v=Io0fBr1XBUA">The Chainsmokers - Don't Let Me Down (Video) ft. Daya</a><br/>
+      <button id="btn4">Lyrics</button>
+      <button onclick="addToFavVideo('Don t Let Me Down')">Add to my favourite</button>
+      <span><embed src="lyrics\Don t Let Me Down.txt" class="lyricsEmb" id="emb4"></span>
+    </div>
+    <div class="videoDiv Maroon5"> <!--video5-->
+      <video width="300" height="200" controls>
+        <source src="mp4\Girls Like You.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video><br/>
+      <audio controls>
+        <source src="mp3\Girls Like You.mp3" type="audio/mp3">
+      </audio><br/>
+      <a href="https://www.youtube.com/watch?v=aJOTlE1K90k">Maroon 5 - Girls Like You</a><br/>
+      <button id="btn5">Lyrics</button>
+      <button onclick="addToFavVideo('Girls Like You')">Add to my favourite</button>
+      <span><embed src="lyrics\Girls Like You.txt" class="lyricsEmb" id="emb5"></span>
+    </div>
+    <div class="videoDiv Drake"> <!--video6-->
+      <video width="300" height="200" controls>
+        <source src="mp4\In My Feelings.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video><br/>
+      <audio controls>
+        <source src="mp3\In My Feelings.mp3" type="audio/mp3">
+      </audio><br/>
+      <a href="https://www.youtube.com/watch?v=DRS_PpOrUZ4">Drake - In My Feelings</a><br/>
+      <button id="btn6">Lyrics</button>
+      <button onclick="addToFavVideo('In My Feelings')">Add to my favourite</button>
+      <span><embed src="lyrics\In My Feelings.txt" class="lyricsEmb" id="emb6"></span>
+    </div>
+    <div class="videoDiv TheChainsmokers"> <!--video7-->
+      <video width="300" height="200" controls>
+        <source src="mp4\Side Effects.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video><br/>
+      <audio controls>
+        <source src="mp3\Side Effects.mp3" type="audio/mp3">
+      </audio><br/>
+      <a href="https://www.youtube.com/watch?v=Q7nt1f2Szn4&index=9&list=PLDIoUOhQQPlXzhp-83rECoLaV6BwFtNC4">The Chainsmokers - Side Effects</a><br/>
+      <button id="btn7">Lyrics</button>
+      <button onclick="addToFavVideo('Side Effects')">Add to my favourite</button>
+      <span><embed src="lyrics\Side Effects.txt" class="lyricsEmb" id="emb7"></span>
+    </div>
+    <div class="videoDiv CharliePuth"> <!--video8-->
+      <video width="300" height="200" controls>
+        <source src="mp4\We Don t Talk Anymore.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video><br/>
+      <audio controls>
+        <source src="mp3\We Don t Talk Anymore.mp3" type="audio/mp3">
+      </audio><br/>
+      <a href="https://www.youtube.com/watch?v=3AtDnEC4zak">Charlie Puth - We Don't Talk Anymore</a><br/>
+      <button id="btn8">Lyrics</button>
+      <button onclick="addToFavVideo('We Don t Talk Anymore')">Add to my favourite</button>
+      <span><embed src="lyrics\We Don t Talk Anymore.txt" class="lyricsEmb" id="emb8"></span>
+    </div>
+    <div class="videoDiv TheChainsmokers"> <!--video9-->
+      <video width="300" height="200" controls>
+        <source src="mp4\Something Just Like This.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video><br/>
+      <audio controls>
+        <source src="mp3\Something Just Like This.mp3" type="audio/mp3">
+      </audio><br/>
+      <a href="https://www.youtube.com/watch?v=FM7MFYoylVs">The Chainsmokers & Coldplay - Something Just Like This</a><br/>
+      <button id="btn9">Lyrics</button>
+      <button onclick="addToFavVideo('Something Just Like This')">Add to my favourite</button>
+      <span><embed src="lyrics\Something Just Like This.txt" class="lyricsEmb" id="emb9"></span>
+    </div>
+    <div class="videoDiv WizKhalifa"> <!--video10-->
+      <video width="300" height="200" controls>
+        <source src="mp4\See You Again.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video><br/>
+      <audio controls>
+        <source src="mp3\See You Again.mp3" type="audio/mp3">
+      </audio><br/>
+      <a href="https://www.youtube.com/watch?v=RgKAFK5djSk">Wiz Khalifa - See You Again</a><br/>
+      <button id="btn10">Lyrics</button>
+      <button onclick="addToFavVideo('See You Again')">Add to my favourite</button>
+      <span><embed src="lyrics\See You Again.txt" class="lyricsEmb" id="emb10"></span>
+    </div>
+
+</div>
+
+</body>
+</html>
