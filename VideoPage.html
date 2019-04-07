@@ -22,47 +22,9 @@
   $(document).ready(function(){
     initProfile();
     filterSelection("all");
-    $('#btn1').click(function(){
-      showLyrics1();
-    });
-    $('#btn2').click(function(){
-      showLyrics2();
-    });
-    $('#btn3').click(function(){
-      showLyrics3();
-    });
-    $('#btn4').click(function(){
-      showLyrics4();
-    });
-    $('#btn5').click(function(){
-      showLyrics5();
-    });
-    $('#btn6').click(function(){
-      showLyrics6();
-    });
-    $('#btn7').click(function(){
-      showLyrics7();
-    });
-    $('#btn8').click(function(){
-      showLyrics8();
-    });
-    $('#btn9').click(function(){
-      showLyrics9();
-    });
-    $('#btn10').click(function(){
-      showLyrics10();
-    });
     $('#userSetting').click(function(){
       window.location.href = "LoginRegister2.html";
     });
-    //-------------------------------------
-    // $("#myInput").on("keyup", function() {
-    //   var value = $(this).val().toLowerCase();
-    //   $("#myDIV *").filter(function() {
-    //     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    //   });
-    // });
-
     $("#myInput").on("keyup", function() {
       var value = $(this).val().toLowerCase();
       $("#videoDivContainer div").filter(function() {
@@ -118,105 +80,13 @@
   //---------------------------------------
   //var i = [0,0,0,0,0,0,0,0,0,0,0];
 
-  function showLyrics1(){
-    alert("Hello! I am an alert box!!" + ti); //-------------------------
-    if(ti%2==0){
-      $('#emb1').css('display', 'block');
-      ti++;
+  function showLyrics(a){
+
+    if($('#emb' + a).css('display') == 'none'){
+      $('#emb' + a).css('display', 'block');
     }
     else{
-      $('#emb1').css('display', 'none');
-      i[1]--;
-    }
-  }
-  function showLyrics2(){
-    if(i[2]%2==0){
-      $('#emb2').css('display', 'block');
-      i[2]++;
-    }
-    else{
-      $('#emb2').css('display', 'none');
-      i[2]--;
-    }
-  }
-  function showLyrics3(){
-    if(i[3]%2==0){
-      $('#emb3').css('display', 'block');
-      i[3]++;
-    }
-    else{
-      $('#emb3').css('display', 'none');
-      i[3]--;
-    }
-  }
-  function showLyrics4(){
-    if(i[4]%2==0){
-      $('#emb4').css('display', 'block');
-      i[4]++;
-    }
-    else{
-      $('#emb4').css('display', 'none');
-      i[4]--;
-    }
-  }
-  function showLyrics5(){
-    if(i[5]%2==0){
-      $('#emb5').css('display', 'block');
-      i[5]++;
-    }
-    else{
-      $('#emb5').css('display', 'none');
-      i[5]--;
-    }
-  }
-  function showLyrics6(){
-    if(i[6]%2==0){
-      $('#emb6').css('display', 'block');
-      i[6]++;
-    }
-    else{
-      $('#emb6').css('display', 'none');
-      i[6]--;
-    }
-  }
-  function showLyrics7(){
-    if(i[7]%2==0){
-      $('#emb7').css('display', 'block');
-      i[7]++;
-    }
-    else{
-      $('#emb7').css('display', 'none');
-      i[7]--;
-    }
-  }
-  function showLyrics8(){
-    if(i[8]%2==0){
-      $('#emb8').css('display', 'block');
-      i[8]++;
-    }
-    else{
-      $('#emb8').css('display', 'none');
-      i[8]--;
-    }
-  }
-  function showLyrics9(){
-    if(i[9]%2==0){
-      $('#emb9').css('display', 'block');
-      i[9]++;
-    }
-    else{
-      $('#emb9').css('display', 'none');
-      i[9]--;
-    }
-  }
-  function showLyrics10(){
-    if(i[10]%2==0){
-      $('#emb10').css('display', 'block');
-      i[10]++;
-    }
-    else{
-      $('#emb10').css('display', 'none');
-      i[10]--;
+      $('#emb' + a).css('display', 'none');
     }
   }
 
@@ -294,7 +164,7 @@
         <source src="mp3\Alone.mp3" type="audio/mp3">
       </audio><br/>
       <a href="https://www.youtube.com/watch?v=1-xGerv5FOk">Alan Walker - Alone</a><br/>
-      <button id="btn1">Lyrics</button>
+      <button id="btn1" onclick="showLyrics('1')">Lyrics</button>
       <button onclick="addToFavVideo('Alone')">Add to my favourite</button>
       <span><embed src="lyrics\Alone.txt" class="lyricsEmb" id="emb1"></span>
     </div>
@@ -307,7 +177,7 @@
         <source src="mp3\Faded.mp3" type="audio/mp3">
       </audio><br/>
       <a href="https://www.youtube.com/watch?v=1-xGerv5FOk">Alan Walker - Faded</a><br/>
-      <button id="btn2">Lyrics</button>
+      <button id="btn2" onclick="showLyrics('2')">Lyrics</button>
       <button onclick="addToFavVideo('Faded')">Add to my favourite</button>
       <span><embed src="lyrics\Faded.txt" class="lyricsEmb" id="emb2"></span>
     </div>
@@ -320,7 +190,7 @@
         <source src="mp3\The Middle.mp3" type="audio/mp3">
       </audio><br/>
       <a href="https://www.youtube.com/watch?v=M3mJkSqZbX4">Zedd, Maren Morris, Grey - The Middle</a><br/>
-      <button id="btn3">Lyrics</button>
+      <button id="btn3" onclick="showLyrics('3')">Lyrics</button>
       <button onclick="addToFavVideo('The Middle')">Add to my favourite</button>
       <span><embed src="lyrics\The Middle.txt" class="lyricsEmb" id="emb3"></span>
     </div>
@@ -333,7 +203,7 @@
         <source src="mp3\Don t Let Me Down.mp3" type="audio/mp3">
       </audio><br/>
       <a href="https://www.youtube.com/watch?v=Io0fBr1XBUA">The Chainsmokers - Don't Let Me Down (Video) ft. Daya</a><br/>
-      <button id="btn4">Lyrics</button>
+      <button id="btn4" onclick="showLyrics('4')">Lyrics</button>
       <button onclick="addToFavVideo('Don t Let Me Down')">Add to my favourite</button>
       <span><embed src="lyrics\Don t Let Me Down.txt" class="lyricsEmb" id="emb4"></span>
     </div>
@@ -346,7 +216,7 @@
         <source src="mp3\Girls Like You.mp3" type="audio/mp3">
       </audio><br/>
       <a href="https://www.youtube.com/watch?v=aJOTlE1K90k">Maroon 5 - Girls Like You</a><br/>
-      <button id="btn5">Lyrics</button>
+      <button id="btn5" onclick="showLyrics('5')">Lyrics</button>
       <button onclick="addToFavVideo('Girls Like You')">Add to my favourite</button>
       <span><embed src="lyrics\Girls Like You.txt" class="lyricsEmb" id="emb5"></span>
     </div>
@@ -359,7 +229,7 @@
         <source src="mp3\In My Feelings.mp3" type="audio/mp3">
       </audio><br/>
       <a href="https://www.youtube.com/watch?v=DRS_PpOrUZ4">Drake - In My Feelings</a><br/>
-      <button id="btn6">Lyrics</button>
+      <button id="btn6" onclick="showLyrics('6')">Lyrics</button>
       <button onclick="addToFavVideo('In My Feelings')">Add to my favourite</button>
       <span><embed src="lyrics\In My Feelings.txt" class="lyricsEmb" id="emb6"></span>
     </div>
@@ -372,7 +242,7 @@
         <source src="mp3\Side Effects.mp3" type="audio/mp3">
       </audio><br/>
       <a href="https://www.youtube.com/watch?v=Q7nt1f2Szn4&index=9&list=PLDIoUOhQQPlXzhp-83rECoLaV6BwFtNC4">The Chainsmokers - Side Effects</a><br/>
-      <button id="btn7">Lyrics</button>
+      <button id="btn7" onclick="showLyrics('7')">Lyrics</button>
       <button onclick="addToFavVideo('Side Effects')">Add to my favourite</button>
       <span><embed src="lyrics\Side Effects.txt" class="lyricsEmb" id="emb7"></span>
     </div>
@@ -385,7 +255,7 @@
         <source src="mp3\We Don t Talk Anymore.mp3" type="audio/mp3">
       </audio><br/>
       <a href="https://www.youtube.com/watch?v=3AtDnEC4zak">Charlie Puth - We Don't Talk Anymore</a><br/>
-      <button id="btn8">Lyrics</button>
+      <button id="btn8" onclick="showLyrics('8')">Lyrics</button>
       <button onclick="addToFavVideo('We Don t Talk Anymore')">Add to my favourite</button>
       <span><embed src="lyrics\We Don t Talk Anymore.txt" class="lyricsEmb" id="emb8"></span>
     </div>
@@ -398,9 +268,9 @@
         <source src="mp3\Something Just Like This.mp3" type="audio/mp3">
       </audio><br/>
       <a href="https://www.youtube.com/watch?v=FM7MFYoylVs">The Chainsmokers & Coldplay - Something Just Like This</a><br/>
-      <button id="btn9">Lyrics</button>
+      <button id="btn9" onclick="showLyrics('9')">Lyrics</button>
       <button onclick="addToFavVideo('Something Just Like This')">Add to my favourite</button>
-      <span><embed src="lyrics\Something Just Like This.txt" class="lyricsEmb" id="emb9"></span>
+      <span><embed src="lyrics\Something Just Like This.txt" class="lyricsEmb" id="embtnb9"></span>
     </div>
     <div class="videoDiv WizKhalifa"> <!--video10-->
       <video width="300" height="200" controls>
@@ -411,7 +281,7 @@
         <source src="mp3\See You Again.mp3" type="audio/mp3">
       </audio><br/>
       <a href="https://www.youtube.com/watch?v=RgKAFK5djSk">Wiz Khalifa - See You Again</a><br/>
-      <button id="btn10">Lyrics</button>
+      <button id="btn10" onclick="showLyrics('10')">Lyrics</button>
       <button onclick="addToFavVideo('See You Again')">Add to my favourite</button>
       <span><embed src="lyrics\See You Again.txt" class="lyricsEmb" id="emb10"></span>
     </div>
