@@ -18,7 +18,7 @@ text-decoration: underline;
 .lyricsEmb{
   height:100px;
   width:300px;
-  display:block;
+  display:none;
 }
 
 .icon{
