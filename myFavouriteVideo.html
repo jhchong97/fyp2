@@ -63,7 +63,7 @@
 
   function appendVideo(videoName, childKey, uid){
     //$("#favVideoDiv").html('<div class="videoDiv"><video width="300" height="200" controls><source src="mp4\' + videoName + '.mp4" type="video/mp4"></video><br/></div>');
-      $("#favVideoDiv").append('<div class=\"videoDiv\" style=\"display:block;\"><video width=\"300\" height=\"200\" controls><source src=\"mp4\\' + videoName + '.mp4\" type=\"video/mp4\"></video><br/><button onclick=\"deleteFavourite(\'' + childKey + '\', \'' + uid + '\')\">Remove</button></div>');
+      $("#favVideoDiv").append('<div class=\"videoDiv\" style=\"display:block;\"><video width=\"300\" height=\"200\" controls><source src=\"mp4\\' + videoName + '.mp4\" type=\"video/mp4\"></video><br/><audio controls><source src=\"mp3\\' + videoName +'.mp3\" type=\"audio/mp3\"></audio><br/><button onclick=\"deleteFavourite(\'' + childKey + '\', \'' + uid + '\')\">Remove</button></div>');
   }
 
   function deleteFavourite(childKey, uid){
@@ -96,7 +96,8 @@
   </div>
 
   <div class="middleDiv container" id="videoDivContainer">
-    <h2><span id="userName"></span></h2>
+    <h2><span id="userName"></span></h2><br>
+    <a href="VideoPage.html">Back to home page</a><br>
     <span id="favVideoDiv"></span>
   </div>
 
