@@ -63,7 +63,7 @@
 
   function appendVideo(videoName, childKey, uid){
     //$("#favVideoDiv").html('<div class="videoDiv"><video width="300" height="200" controls><source src="mp4\' + videoName + '.mp4" type="video/mp4"></video><br/></div>');
-      $("#favVideoDiv").append('<div class=\"videoDiv\" style=\"display:block;\"><video width=\"300\" height=\"200\" controls><source src=\"mp4\\' + videoName + '.mp4\" type=\"video/mp4\"></video><br/><audio controls><source src=\"mp3\\' + videoName +'.mp3\" type=\"audio/mp3\"></audio><br/><button onclick=\"deleteFavourite(\'' + childKey + '\', \'' + uid + '\')\">Remove</button></div>');
+      $("#favVideoDiv").append('<div class=\"videoDiv\" style=\"display:block;\"><video width=\"300\" height=\"200\" controls><source src=\"mp4\\' + videoName + '.mp4\" type=\"video/mp4\"></video><br/><audio controls><source src=\"mp3\\' + videoName +'.mp3\" type=\"audio/mp3\"></audio><br/><span>' + videoName + '</span><br><button onclick=\"deleteFavourite(\'' + childKey + '\', \'' + uid + '\')\">Remove</button></div>');
   }
 
   function deleteFavourite(childKey, uid){
